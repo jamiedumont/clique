@@ -1,0 +1,16 @@
+.markdown {
+
+  li, p {
+    @apply .my-2;
+  }
+
+  li {
+    @apply .pl-4;
+  }
+
+  ul {
+    @apply .pl-6;
+  }
+
+}
+

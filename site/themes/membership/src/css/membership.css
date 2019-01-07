@@ -1,0 +1,50 @@
+/*
+*   This injects Tailwind's base styles, which is a combination of
+*   Normalize.css and some additional base styles.
+*/
+
+@import "tailwind/_preflight";
+
+
+/* Baseline */
+@import "baseline/_body";
+@import "baseline/_fonts";
+
+
+/* Components */
+
+
+
+@import "components/_markdown";
+
+@import "components/_headers";
+
+@import "components/_pagination";
+
+
+
+
+/*
+*   This injects all of Tailwind's utility classes, generated based on your
+*   config file.
+*/
+
+@import "tailwind/_utilities";
+
+/* Further utilities */
+
+@import "utilities/_aspect-ratio";
+
+@responsive {
+    .min-h-18r {
+        min-height: 18rem;
+    }
+
+    .h-25r {
+        height: 25rem;
+    }
+
+    .max-h-half {
+        max-height: 50vh;
+    }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Another awesome Statamic site">
+    <title>{{ title or site_title }}</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{{ theme:css }}">
+</head>
+
+
+<body>
+
+    <div id="content_area" class="px-8 pb-2 mx-auto max-w-2xl">
+
+        <header class="flex items-center pt-16 pb-6 border-b-4 border-teal mb-8 lg:mb-16">
+            <a class="w-1/2 hover:no-underline" href="/">
+                <span class="block leading-tight text-xl md:text-2xl text-almost-black font-bold font-slab">Clique <span class="block md:inline text-base md:text-2xl font-normal text-grey-dark">by Jamie Dumont</span></h1>
+            </a>
+            <div class="w-1/2 text-right">
+                <a class="subheader hover:border-b-2 border-teal hover:text-grey-darker no-underline" href="/login">Login</a>
+            </div>
+        </header>
+
+        {{ template_content }}
+    </div>
+
+    <script src="{{ theme:js }}"></script>
+    {{ yield:extra_js }}
+
+</body>
+
+</html>

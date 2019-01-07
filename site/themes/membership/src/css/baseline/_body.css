@@ -1,0 +1,11 @@
+body {
+  @apply text-grey-darker text-base leading-normal font-sans .antialiased;
+}
+
+a {
+  @apply text-grey-darker no-underline;
+}
+
+a:hover {
+  @apply underline text-teal;
+}

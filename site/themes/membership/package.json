@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "css:purge": "./node_modules/purgecss/bin/purgecss -c purge.config.js -o css",
+    "css:postcss": "./node_modules/postcss-cli/bin/postcss src/css/membership.css -o css/membership.css --config ./postcss.config.js",
+    "css": "npm run css:postcss && npm run css:purge",
+    "watch": "npm run css:postcss -- -w"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.2.0",
+    "csswring": "^6.0.3",
+    "postcss-cli": "^6.0.0",
+    "postcss-import": "^11.1.0",
+    "postcss-nested": "^3.0.0",
+    "purgecss": "^0.21.0",
+    "tailwindcss": "^0.5.2"
+  }
+}

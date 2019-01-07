@@ -1,0 +1,7 @@
+.header {
+  @apply font-slab font-black text-3xl text-almost-black leading-none;
+}
+
+.subheader {
+  @apply uppercase tracking-wide text-base text-grey font-slab font-normal leading-none;
+}
