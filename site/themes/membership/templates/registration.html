@@ -1,126 +1,150 @@
-<div class="mt-4">
-
-    <h1 class="m-0 p-3 text-blue-darker text-center">Members area</h1>
-    <h2 class="mt-0 mb-2 text-center uppercase tracking-wide text-grey">Register</h2>
-
-    <div class="p-4">
-
-        <!-- Registration form starts. Redirect to the private content if successful. Add the data attribute needed by Charge -->
-        {{ user:register_form redirect="/private-content" attr="data-charge-form" }}
-
-        <!-- Add a containing div that puts the two sections side-by-side on wider screens -->
-        <!-- STATAMIC USER FIELDS -->
-        <div class="md:flex bg-grey-lighter py-6 px-4 rounded"> <!-- outer container -->
-
-            <div class="w-full md:w-1/2 px-3"> <!-- left col -->
-                <legend class="w-full mb-3 pb-1 text-xs uppercase tracking border-b border-grey text-blue-darker">Account details</legend>
-
-                <div class="mb-2">
-                    <label class="block text-xs mb-1">Email</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" name="email" value="{{ old:email }}" />
-                </div>
-
-                <div class="mb-2">
-                    <label class="block text-xs mb-1">First Name</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" name="first_name" value="{{ old:first_name }}" />
-                </div>
-
-                <div class="mb-2">
-                    <label class="block text-xs mb-1">Last Name</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" name="last_name" value="{{ old:last_name }}" />
-                </div>
-
-                <div class="mb-2">
-                    <label class="block text-xs mb-1">Password</label>
-                    <!-- No value="" attribute on these inputs, as we don't want to persist the passwords between page loads (if errors) -->
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="password" name="password" />
-                </div>
-
-                <div class="mb-2">
-                    <label class="block text-xs mb-1">Password Confirmation</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="password" name="password_confirmation" />
-                </div>
-
-            </div> <!-- end left col -->
+<div class="my-16 text-center">
+  <h1 class="header text-5xl text-almost-black">Join us</h1>
+</div>
 
 
 
-            <!-- STRIPE/CHARGE FIELDS -->
-            <div class="w-full md:w-1/2 px-3 mt-8 md:mt-0"> <!-- right col -->
-                <legend class="w-full mb-3 pb-1 text-xs uppercase tracking border-b border-grey text-blue-darker">Payment</legend>
+{{ user:register_form redirect="/private-content" attr="class:form|data-charge-form" }}
 
-                <!-- hidden field that sets the "plan", value matches the ID of the Stripe subscription plan -->
-                <input type="hidden" name="plan" id="plan" value="demo_membership">
+<div class="max-w-lg mx-auto">
 
-                <div class="mb-2">
-                    <label class="block text-xs mb-1" for="cc_name">Name on Card</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="name" id="cc_name" required>
-                </div>
+<div id="plan-details" class="mt-8 mb-16 border-t-2 lg:clearfix">
 
-                <div class="mb-2">
-                    <label class="block text-xs mb-1" for="cc_number">Zip/Postal Code</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="address_zip" id="address_zip" required>
-                </div>
+  <div class="lg:w-1/3 lg:float-left">
+    <h3 class="my-4">Plan</h3>
+  </div>
 
-                <div class="mb-2">
-                    <label class="block text-xs mb-1" for="cc_number">Card Number</label>
-                    <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="number" id="cc_number" required placeholder="4242 4242 4242 4242">
-                </div>
-
-                <div class="table w-100 mb-2">
-
-                    <div class="table-cell pr-3">
-                        <label class="block text-xs mb-1" for="exp_month">Exp. Month</label>
-                        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="exp_month" id="exp_month" maxlength="2" required placeholder="02">
-                    </div>
-
-                    <div class="table-cell pr-3">
-                        <label class="block text-xs mb-1" for="exp_year">Exp. Year</label>
-                        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="exp_year" id="exp_year" maxlength="2" required placeholder="18">
-                    </div>
-
-                    <div class="table-cell">
-                        <label class="block text-xs mb-1" for="cvc">CVC</label>
-                        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="cvc" id="cvc" maxlength="4" required placeholder="576">
-                    </div>
-
-                </div>
-
-            </div> <!-- end right col -->
-
-            </div> <!-- End content block -->
-
-            <!-- check for errors in the form submission -->
-            {{ if errors }}
-                <div class="max-w-sm mx-auto text-center p-3 my-4 rounded bg-red-dark text-white">
-                    <h4 class="mt-0 mb-2 pb uppercase tracking text-sml">Errors:</h4>
-                    <!-- loop over those errors -->
-                    {{ errors }}
-                        <!-- outputting the value of each, comes from Statamic/Charge/Stripe internals -->
-                        <div class="text-xs mb-1">- {{ value }}</div>
-                    {{ /errors }}
-                </div>
-            {{ /if }}
-
-            <!-- submit button, again with relevant data attribute -->
-            <button
-            class="max-w-sm block w-full mx-auto border-none mt-4 text-lg p-3 bg-blue rounded text-white cursor-pointer"
-            id="register"
-            data-charge-button
-            >Register</button>
+  <div class="lg:w-2/3 lg:float-left lg:pl-4 lg:pt-4">
+    <div class="inline-block relative w-full">
+      <select class="" id="plan" name="plan">
+        <option value="plan_ELvYsGOh6YfIYI">Monthly - £30 per month</option>
+        <option value="plan_E0cTP6aurPTfv0">Annual - £300 per year</option>
+      </select>
+      <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-        <!-- end user registration form -->
-        {{ /user:register_form }}
+<div id="account-info" class="mb-16 border-t-2 lg:clearfix">
+  <div class="lg:w-1/3 lg:float-left">
+    <h3 class="my-4">Account info</h3>
+  </div>
 
-        <a class="block w-full text-blue-darker font-medium my-4 text-center" href="/login">Already have an account? Login</a>
+  <div class="lg:w-2/3 lg:float-left lg:pl-4 lg:pt-4">
+    <div class="mb-4">
+      <label class="db lh-copy f7 mb1">Email</label>
+      <input class="shadow bg-white pa3 input-reset ba b--light-gray br2 w-100" type="text" name="email" value="{{ old:email }}" placeholder="your@email.com"/>
+    </div>
+
+    <div class="mb-4 flex">
+      <div class="pr-2 flex-1">
+        <label class="db lh-copy f7 mb1">First Name</label>
+        <input class="shadow bg-white pa3 input-reset ba b--light-gray br2 w-100" type="text" name="first_name" value="{{ old:first_name }}"  placeholder="John" />
+      </div>
+      <div class="pl-2 flex-1">
+        <label class="db lh-copy f7 mb1">Last Name</label>
+        <input class="shadow bg-white pa3 input-reset ba b--light-gray br2 w-100" type="text" name="last_name" value="{{ old:last_name }}" placeholder="Smith" />
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label class="db lh-copy f7 mb1">Password</label>
+      <input class="shadow bg-white pa3 input-reset ba b--light-gray br2 w-100" type="password" name="password" />
+    </div>
+
+    <div class="mb-4">
+      <label class="db lh-copy f7 mb1">Confirm password</label>
+      <input class="shadow bg-white pa3 input-reset ba b--light-gray br2 w-100" type="password" name="password_confirmation" />
+    </div>
+
+  </div>
+</div>
+
+<div id="card-details" class="mb-16 border-t-2 lg:clearfix">
+
+  <div class="lg:w-1/3 lg:float-left">
+    <h3 class="my-4">Card details</h3>
+  </div>
+
+  <div class="lg:w-2/3 lg:float-left lg:pl-4 lg:pt-4">
+
+
+    <div class="mb-4 flex">
+      <div class="flex-grow pr-2">
+        <label class="" for="cc_name">Name on Card</label>
+        <input class="" type="text" data-stripe="name" id="cc_name" placeholder="Mr J Smith" required>
+      </div>
+      <div class="pl-2">
+        <label class="db lh-copy f7 fw1 mb1 tl" for="cc_number">Post Code</label>
+        <input class="shadow pa3 input-reset ba b--light-gray br2 w-full" type="text" data-stripe="address_zip" id="address_zip" placeholder="E1 2AA" required>
+      </div>
+    </div>
+
+
+    <div class="mb-4">
+      <label class="db lh-copy f7 fw1 mb1 tl" for="cc_number">Card Number</label>
+      <input id="credit-card-input" class="shadow pa3 input-reset ba b--light-gray br2 w-100" type="text" data-stripe="number" id="cc_number" required placeholder="4242 4242 4242 4242">
+    </div>
+
+    <div class="table w-100 mb-2">
+
+      <div class="table-cell pr-3">
+        <label class="block text-xs mb-1" for="exp_month">Exp. Month</label>
+        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="exp_month" id="exp_month" maxlength="2" required placeholder="02">
+      </div>
+
+      <div class="table-cell pr-3">
+        <label class="block text-xs mb-1" for="exp_year">Exp. Year</label>
+        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="exp_year" id="exp_year" maxlength="2" required placeholder="18">
+      </div>
+
+      <div class="table-cell">
+        <label class="block text-xs mb-1" for="cvc">CVC</label>
+        <input class="p-3 input-reset border border-grey rounded w-full" type="text" data-stripe="cvc" id="cvc" maxlength="4" required placeholder="576">
+      </div>
 
     </div>
 
+
+  </div>
 </div>
+
+
+
+<div id="payment-banner">
+  <div class="flex items-center my-4">
+    <a class="block text-sm no-underline text-center text-random hover:underline" href="/login">Already have an account? Login</a>
+    {{ if errors }}
+    <div style="max-width: 350px;" class="center pa3 mv4 br2 bg-ct white">
+      <h4 class="mt0 mb2 pb2 fw3 ttu tracked f6 bb b--white-10">Errors:</h4>
+      {{ errors }}
+      <div class="f7 mb1">- {{ value }}</div>
+      {{ /errors }}
+    </div>
+    {{ /if }}
+    <div class="flex-1 text-right">
+      <button
+        class="md:px-16 md:text-xl"
+        id="register"
+        data-charge-button
+        >Join</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+{{ /user:register_form }}
 
 <!-- render the contents of these tags into the yield in the layout file -->
 {{ section:extra_js }}
-    <!-- Stripe JS library included with Charge -->
-    {{ charge:js }}
+
+<!-- Stripe JS library included with Charge -->
+{{ charge:js }}
+
+
 {{ /section:extra_js }}

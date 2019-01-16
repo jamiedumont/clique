@@ -9,3 +9,19 @@ a {
 a:hover {
   @apply underline text-teal;
 }
+
+label {
+  @apply font-semibold text-sm text-grey-dark block mb-1;
+}
+
+input, select {
+  @apply p-4 input-reset border border-grey rounded w-full;
+}
+
+button {
+ @apply uppercase font-slab border-none px-4 py-3 tracking-wide bg-teal-dark rounded text-white cursor-pointer;
+}
+
+button:hover {
+  @apply bg-teal;
+}
